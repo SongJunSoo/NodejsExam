@@ -76,8 +76,10 @@ for(BankModel1 bank : bankmodel3.getBody())
 
 git clone https://github.com/SongJunSoo/NodejsExam.git
 
-3. nodejs
-   sublime
-   github
-   gimp    
- 
+3. nodejs : javascript 서버 프로그래밍 
+   sublime : 무료 텍스트기 괜찮다
+   github : social 소스 무료 저장 
+   gimp  : 무료 이미지 관리 툴   
+   MS빙번역기 무료 -> nodejs에서 export 모듈이 있어서 연동하면
+                      쉽게 실시간 번역기 개발이 가능하다. 
+   
