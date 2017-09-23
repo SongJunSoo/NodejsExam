@@ -1,0 +1,83 @@
+#####################################################################################
+2017.09.15 수업내용
+#####################################################################################
+1. git 사용 명령어
+
+ git init
+ git add *
+ git commit -m "first commit"
+ git config --global user.email "jssong80@naver.com"
+ git config --global user.name "SongJunSoo"
+
+2. 강사님 github 주소
+ https://github.com/nashorn74/ProtoType/blob/
+ master/app/src/main/res/layout/activity_main.xml
+
+
+#####################################################################################
+2017.09.16 수업내용
+#####################################################################################
+
+수업관련 사이트 :
+
+1) http://json.parser.online.fr/ : json parser
+2) POSTMAN : 크롬에서 확장프로그램 추가
+3) http://troy.labs.daum.net/ : 모바일 해상도 보는 화면
+4) 카카오 오븐 : 프로토 타입 만드는 사이트
+5) https://github.com/nashorn74/ProtoType/
+6) https://github.com/SongJunSoo/HoneyPrettyKidsLove
+7) 모비즌 : 안드로이드 PC화면 미러링
+<<<<<<< HEAD
+
+
+향상 for문 사용
+for(BankModel1 bank : bankmodel3.getBody())
+{
+
+}
+
+#####################################################################################
+2017.09.22 수업내용
+#####################################################################################
+
+1. 교재 184 page : margin, padding 차이점 나옴
+2. 이미지 사이즈 줄이는 툴 : https://www.gimp.org/downloads/
+3. 이미지는 100kbytes 전후
+=======
+>>>>>>> 7fb550924fa9ecda7ca0dc699fa913c8107a702d
+
+
+<<<<<<< HEAD
+=======
+8)
+>>>>>>> e94ae06d0315ede47cac06fb5fa0a4494f30dc18
+향상 for문 사용
+for(BankModel1 bank : bankmodel3.getBody())
+{
+
+}
+<<<<<<< HEAD
+=======
+
+9) kenshi@nate.com / 김봉섭
+>>>>>>> e94ae06d0315ede47cac06fb5fa0a4494f30dc18
+
+
+#####################################################################################
+2017.09.23 수업내용
+#####################################################################################
+
+1. https://www.sublimetext.com/
+
+서브 라임 에디터 
+구글에서 sublime 	검색 
+
+2. github에서 만든 폴더 내용 그대로 내 경로에 만들어 준다. 
+
+git clone https://github.com/SongJunSoo/NodejsExam.git
+
+3. nodejs
+   sublime
+   github
+   gimp    
+ 
