@@ -64,7 +64,7 @@ for(BankModel1 bank : bankmodel3.getBody())
 
 
 #####################################################################################
-2017.09.23 수업내용
+2017.09.23(토요일) 수업내용
 #####################################################################################
 
 1. https://www.sublimetext.com/
@@ -83,3 +83,13 @@ git clone https://github.com/SongJunSoo/NodejsExam.git
    MS빙번역기 무료 -> nodejs에서 export 모듈이 있어서 연동하면
                       쉽게 실시간 번역기 개발이 가능하다. 
    
+
+4. nodejs 외부 모듈은 구글에서 "npm 모듈이름" 등으로 검색 
+
+1) bing 번역 사용하기 
+ npm bing translate 로 검색
+
+2) 구글에서 npm 띄고 모듈명 검색
+
+npm jade
+npm ejs   
