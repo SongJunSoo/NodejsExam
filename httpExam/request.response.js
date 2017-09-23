@@ -38,7 +38,7 @@ http.createServer(function(req,res){
     	}
     	
     }else if(req.method == 'POST'){
-    	console.log(req.url+" POST");
+    	console.log(req.url+" POST request");
     	req.on('data', function(data){
     		res.writeHead(200, {'Content-Type':'text/html'});
     		res.end('<h1>'+data+'</h1>');
