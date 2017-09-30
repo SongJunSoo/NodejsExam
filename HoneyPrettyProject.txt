@@ -110,3 +110,88 @@ git clone https://github.com/SongJunSoo/NodejsExam.git
 
 /httpExam/node_modules 폴더 추가 , 해당 폴더는 github에 안올라간다. 
   
+#################################################################################################
+# 2017.09.29(토요일)
+#################################################################################################
+
+1. restFul api 생성 실습
+ - 포스트맨을 사용하여 테스트 
+
+#################################################################################################
+# 2017.09.30(토요일)
+#################################################################################################
+
+1) mySQL 실습내용 
+
+-- mySQL 설치시에 오류나는 것은 vcredist_x64 (1).exe 설치하여 해결 
+
+create database restful;
+
+create database restful;
+
+use restful;
+
+create table user (
+ id integer primary key auto_increment,
+ name text,
+ age integer
+);
+
+2) mongodb 사용 
+
+[1] mongo db 서버 기동 
+
+50137436@50137436-PC MINGW64 ~
+$ cd c:\mongodb
+
+50137436@50137436-PC MINGW64 /c/mongodb
+$ mkdir var
+
+50137436@50137436-PC MINGW64 /c/mongodb
+$ ./bin/mongod -dbpath ./var
+
+ ==> .\bin\mongod -dbpath .\var
+
+2017-09-30T11:18:12.896+0900 I NETWORK  [thread1] waiting for connections on por                                             t 27017
+
+
+[2] mongo db 클라이언트 접속 
+
+50137436@50137436-PC MINGW64 ~/NodejsExam/restfulExam/node_modules (master)
+$ cd c:\mongodb
+
+50137436@50137436-PC MINGW64 /c/mongodb
+$ ./bin/mongo
+
+ ==> .\bin\mongo
+
+MongoDB shell version v3.4.7
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.4.7
+
+
+show dbs;
+admin  0.000GB
+local  0.000GB
+
+
+[3] mongo db 사용 실습
+
+50137436@50137436-PC MINGW64 /c/mongodb
+$ ./bin/mongo
+MongoDB shell version v3.4.7
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.4.7
+show dbs
+admin    0.000GB
+local    0.000GB
+restful  0.000GB
+use restful
+switched to db restful
+show collections
+messages
+db.messages.find()
+{ "_id" : ObjectId("59cf22459546791baca90110"), "sender_id" : "1", "receiver_id" : "2\n", "sender" : { "id" : 1             , "name" : "송준수" }, "receiver" : {  }, "message" : "안녕하세요", "created_at" : ISODate("2017-09-30T04:49:09             .232Z") }
+{ "_id" : ObjectId("59cf22c66844d810708d642a"), "sender_id" : "1", "reciever_id" : null, "sender" : { "id" : 1,              "name" : "송준수" }, "reciever" : {  }, "message" : "안녕하세요", "created_at" : ISODate("2017-09-30T04:51:18.             163Z") }
+
+
