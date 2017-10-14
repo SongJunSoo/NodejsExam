@@ -3,12 +3,16 @@ var bodyParser = require('body-parser');
 var app = express();
 app.use(bodyParser.urlencoded({extended:false}));
 
+// 크로스도메인 이슈 대응 (CORS), SJS 추가 2017.10.14
+var cors = require('cors')();
+app.use(cors);
+ 
 var mysql = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : 'test1234',
-  database : 'restful'
+  database : 'restful' 
 }); 
 connection.connect();
 /////////////////////////////////// 

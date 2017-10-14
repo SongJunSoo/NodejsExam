@@ -144,10 +144,9 @@ create table user (
 50137436@50137436-PC MINGW64 ~
 $ cd c:\mongodb
 
-50137436@50137436-PC MINGW64 /c/mongodb
 $ mkdir var
 
-50137436@50137436-PC MINGW64 /c/mongodb
+-- mongo db 실행 방법
 $ ./bin/mongod -dbpath ./var
 
  ==> .\bin\mongod -dbpath .\var
@@ -193,5 +192,212 @@ messages
 db.messages.find()
 { "_id" : ObjectId("59cf22459546791baca90110"), "sender_id" : "1", "receiver_id" : "2\n", "sender" : { "id" : 1             , "name" : "송준수" }, "receiver" : {  }, "message" : "안녕하세요", "created_at" : ISODate("2017-09-30T04:49:09             .232Z") }
 { "_id" : ObjectId("59cf22c66844d810708d642a"), "sender_id" : "1", "reciever_id" : null, "sender" : { "id" : 1,              "name" : "송준수" }, "reciever" : {  }, "message" : "안녕하세요", "created_at" : ISODate("2017-09-30T04:51:18.             163Z") }
+
+#################################################################################################
+# 2017.10.13(금요일)
+#################################################################################################
+
+$ git clone https://github.com/SongJunSoo/HoneyPrettyKidsLoveServer.git
+ 
+-- express 모듈 전체적으로 설치 : -g 옵션
+$ npm install -g express-generator
+
+
+$ express HoneyPrettyKidsLoveServer/
+
+
+$ express HoneyPrettyKidsLoveServer/
+
+  warning: the default view engine will not be jade in future releases
+  warning: use `--view=jade' or `--help' for additional options
+
+destination is not empty, continue? [y/N] y
+
+   create : HoneyPrettyKidsLoveServer/
+   create : HoneyPrettyKidsLoveServer//package.json
+   create : HoneyPrettyKidsLoveServer//app.js
+   create : HoneyPrettyKidsLoveServer//views
+   create : HoneyPrettyKidsLoveServer//views/index.jade
+   create : HoneyPrettyKidsLoveServer//views/layout.jade
+   create : HoneyPrettyKidsLoveServer//views/error.jade
+   create : HoneyPrettyKidsLoveServer//routes
+   create : HoneyPrettyKidsLoveServer//routes/index.js
+   create : HoneyPrettyKidsLoveServer//routes/users.js
+   create : HoneyPrettyKidsLoveServer//public
+   create : HoneyPrettyKidsLoveServer//bin
+   create : HoneyPrettyKidsLoveServer//bin/www
+   create : HoneyPrettyKidsLoveServer//public/javascripts
+   create : HoneyPrettyKidsLoveServer//public/images
+   create : HoneyPrettyKidsLoveServer//public/stylesheets
+   create : HoneyPrettyKidsLoveServer//public/stylesheets/style.css
+
+   install dependencies:
+     $ cd HoneyPrettyKidsLoveServer/ && npm install
+
+   run the app:
+     $ DEBUG=honeyprettykidsloveserver:* npm start
+
+-- npm install 하면 package.jon을 보고 알아서 설치해 준다. 
+-- npm install 명령어 
+50137436@50137436-PC MINGW64 ~/HoneyPrettyKidsLoveServer (master)
+$ npm install
+
+-- 웹서버 실행 
+$ node bin/www
+
+50137436@50137436-PC MINGW64 ~/HoneyPrettyKidsLoveServer (master)
+$ git add *
+ 
+50137436@50137436-PC MINGW64 ~/HoneyPrettyKidsLoveServer (master)
+$ git commit -m "Express Project Create"
+[master ee32ea3] Express Project Create
+ 9 files changed, 197 insertions(+)
+ create mode 100644 app.js
+ create mode 100644 bin/www
+ create mode 100644 package.json
+ create mode 100644 public/stylesheets/style.css
+ create mode 100644 routes/index.js
+ create mode 100644 routes/users.js
+ create mode 100644 views/error.jade
+ create mode 100644 views/index.jade
+ create mode 100644 views/layout.jade
+
+50137436@50137436-PC MINGW64 ~/HoneyPrettyKidsLoveServer (master)
+$ git push
+Counting objects: 16, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (13/13), done.
+Writing objects: 100% (16/16), 2.80 KiB | 574.00 KiB/s, done.
+Total 16 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/SongJunSoo/HoneyPrettyKidsLoveServer.git
+   f220a4d..ee32ea3  master -> master
+
+
+----------------------------------------------------------------------------------
+AWS     : 아마존 서버 
+jenkins :
+heroku  : 클라우드 서비스 
+
+----------------------------------------------------------------------------------
+
+--> package.json 에 추가됨 
+
+50137436@50137436-PC MINGW64 ~/HoneyPrettyKidsLoveServer (master)
+$ npm install mysql --save
+
+50137436@50137436-PC MINGW64 ~/HoneyPrettyKidsLoveServer (master)
+$ npm install mongodb --save
+
+
+#################################################################################################
+# 2017.10.14(토요일)
+#################################################################################################
+
+1) github에서 new repository 생성 : AngularJSExamSJS
+
+-- AngularJSExamSJS.git 복사
+$ git clone https://github.com/SongJunSoo/AngularJSExamSJS.git
+
+-- yo install : build 툴 설치
+$ npm install -g yo
+
+-- bower  : build 툴 설치 
+$ npm install -g bower
+
+-- grunt-cli  : build 툴  설치
+$ npm install -g grunt-cli
+
+-- generate angular  설치
+$ npm install -g generator-angular
+
+-- 기본 필요한 라이브러리 설치  
+$ npm install
+
+-- bower를 위한 기본 필요한 라이브러리 설치  
+$ bower install
+
+-- yo를 이용한 angular 프로젝트 생성 
+$ yo angular AngularJsExamSJS
+
+     _-----_
+    |       |    ╭──────────────────────────╮
+    |--(o)--|    │    Welcome to Yeoman,    │
+   `---------´   │   ladies and gentlemen!  │
+    ( _´U`_ )    ╰──────────────────────────╯
+    /___A___\   /
+     |  ~  |
+   __'.___.'__
+ ´   `  |° ´ Y `
+
+Out of the box I include Bootstrap and some AngularJS recommended modules.
+
+? Would you like to use Gulp (experimental) instead of Grunt? (y/N) n
+? Would you like to use Sass (with Compass)? (Y/n) n
+? Would you like to include Bootstrap? (Y/n) y
+Enter
+? Overwrite README.md? (ynaxdH) y
+? Overwrite .gitignore? (ynaxdH) y
+
+
+- 명령어 실행 순서 
+No
+No
+Yes
+Enter
+Yes
+Yes 
+
+-- 서버 기동 
+grunt serve 
+
+-- 빌드 
+grunt build
+
+dist 폴더의 파일과 폴더를 모두 복사
+웹서버의 wwwroot에 붙여 넣기 
+웹브라우저로 접속 확인 
+
+-- nginx 웹서버 
+-- nginx 웹서버 html폴더에 grunt build생성된 dist폴더의 내용을
+   C:\nginx-1.12.1\html옮기고 브라우저에서 localhost로 접근하면 된다.
+
+
+--------------------------------------------------------------------------------------------------------
+
+50137436@50137436-PC MINGW64 ~/AngularJSExamSJS (master)
+$ yo angular:controller login
+   create app\scripts\controllers\login.js
+   create test\spec\controllers\login.js
+
+50137436@50137436-PC MINGW64 ~/AngularJSExamSJS (master)
+$ yo angular:controller singup
+   create app\scripts\controllers\singup.js
+   create test\spec\controllers\singup.js
+
+50137436@50137436-PC MINGW64 ~/AngularJSExamSJS (master)
+$ yo angular:controller user-list
+   create app\scripts\controllers\user-list.js
+   create test\spec\controllers\user-list.js
+
+50137436@50137436-PC MINGW64 ~/AngularJSExamSJS (master)
+$ yo angular:controller user-detail
+   create app\scripts\controllers\user-detail.js
+   create test\spec\controllers\user-detail.js
+
+50137436@50137436-PC MINGW64 ~/AngularJSExamSJS (master)
+$ yo angular:controller user-withdraw
+   create app\scripts\controllers\user-withdraw.js
+   create test\spec\controllers\user-withdraw.js
+
+
+※ bower 도 npm같은 툴이다. 
+
+-- libarary 추가 
+$ bower install angular-bootstrap --save
+
+-- angular를 묶어 주기 편하게 해주는 library
+$ bower install angular-ui-router --save
+
 
 
