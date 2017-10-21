@@ -2,11 +2,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(express.static(__dirname+'/public'))
 
 // 크로스도메인 이슈 대응 (CORS), SJS 추가 2017.10.14
 var cors = require('cors')();
 app.use(cors);
- 
+  
 var mysql = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -23,6 +24,33 @@ MongoClient.connect(url, function(err, db) {
   console.log("Connected correctly to server");
   dbObj = db;
 });
+///////////////////////////////////
+var multer = require('multer');
+var Storage = multer.diskStorage({
+     destination: function(req, file, callback) {
+         callback(null, "./public/upload_image/");
+     },
+     filename: function(req, file, callback) {
+     		file.uploadedFile = file.fieldname + "_" + 
+     			Date.now() + "_" + file.originalname;
+     		console.log('file.uploadedFile:'+file.uploadedFile);
+         callback(null, file.uploadedFile);
+     }
+ });
+ var upload = multer({
+     storage: Storage
+ }).single("image");
+app.post('/user/picture',function(req, res) {
+	upload(req, res, function(err) {
+		if (err) {
+			res.send(JSON.stringify(err));
+		} else {
+			res.send(JSON.stringify({url:req.file.uploadedFile,
+				description:req.body.description}));
+		}
+	});
+});
+///////////////////////////////////
 app.get('/user/message',function(req,res) {
 	console.log(req.query.sender_id);
 	var condition = {};
