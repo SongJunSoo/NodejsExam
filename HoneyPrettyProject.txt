@@ -406,5 +406,59 @@ $ bower install angular-ui-router --save
 
 
 #################################################################################################
-# 2017.10.20(금요일) 
+# 2017.10.27(금요일) 
 #################################################################################################
+
+#json-web-token을 사용하기 위해 아래 명령어 사용 
+
+$ npm install json-web-token
+
+구글 검색 - android httprequest post 방법 찾는 검색어 - 4번째 주소
+android httprequesturl post parameter
+
+
+[MySQL]
+
+use restful;
+
+drop table user;
+
+create table user(
+  id integer primary key auto_increment,
+  user_id text,
+  password text,
+  name text,
+  age integer 
+);
+
+select * from user;
+
+create table user_login(
+  id integer primary key auto_increment,
+    user_real_id integer,
+    token text,
+    created_at datetime default current_timestamp
+);
+
+select * from user_login;
+
+// editbox 키보드 타입 - 영문우선 으로 
+android edittext keyboard type
+ 
+// session-info, session-service, login 폴더 생성
+
+50137436@50137436-PC MINGW64 ~/AngularJSExamSJS (master)
+$ yo angular:service session-info
+   create app\scripts\services\session-info.js
+   create test\spec\services\session-info.js
+
+50137436@50137436-PC MINGW64 ~/AngularJSExamSJS (master)
+$ yo angular:service session-service
+   create app\scripts\services\session-service.js
+   create test\spec\services\session-service.js
+
+50137436@50137436-PC MINGW64 ~/AngularJSExamSJS (master)
+$ yo angular:controller login
+identical app\scripts\controllers\login.js
+identical test\spec\controllers\login.js
+ 

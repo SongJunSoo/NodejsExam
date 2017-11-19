@@ -43,9 +43,9 @@ var Storage = multer.diskStorage({
 app.post('/user/picture',function(req, res) {
 	upload(req, res, function(err) {
 		if (err) {
-			res.send(JSON.stringify(err));
+			res.send(JSON.stringify({result:false,db_result:err}));
 		} else {
-			res.send(JSON.stringify({url:req.file.uploadedFile,
+			res.send(JSON.stringify({result:true, url:req.file.uploadedFile,
 				description:req.body.description}));
 		}
 	});
@@ -59,9 +59,9 @@ app.post('/parent',function(req,res){
 		[ req.body.device_token, req.body.name, req.body.birth, req.body.gender, req.body.picture_url ],
 		function(err, result) {
 			if (err) {
-				res.send(JSON.stringify(err));
+				res.send(JSON.stringify({result:false,db_result:err}));
 			} else {
-				res.send(JSON.stringify(result));
+				res.send(JSON.stringify({result:true,db_result:result}));
 			}
 		})
 });
@@ -84,9 +84,14 @@ app.get('/parent',function(req,res){
 				res.send(JSON.stringify(err));
 			} else {
 				if (results.length > 0) {
-					res.send(JSON.stringify(results[0]));
+					res.send(JSON.stringify({result:true,
+											hpkl_id:results[0].hpkl_id,
+											db_result:results
+											})); 
 				} else {
-					res.send(JSON.stringify({}));
+					res.send(JSON.stringify({result:false,
+											db_result:null
+											})); 
 				}
 				
 			}
@@ -97,15 +102,15 @@ app.get('/parent',function(req,res){
 ///////////////////////////////////
 app.post('/child',function(req,res){
 	connection.query(
-		'insert into hpkl_child(hpkl_id, name, birth, gender, picture_url) values(?,?,?,?,?)',
-		[ req.body.hpkl_id, req.body.name, req.body.birth, req.body.gender, req.body.picture_url ],
+		'insert into hpkl_child(hpkl_id, name, birth, gender, hpkl_total_saving_love, picture_url) values(?, ?,?,?,?,?)',
+		[ req.body.hpkl_id, req.body.name, req.body.birth, req.body.gender, "0", req.body.picture_url ],
 		function(err, result) {
 			if (err) {
-				res.send(JSON.stringify(err));
+				res.send(JSON.stringify({result:false,db_result:err}));
 			} else {
-				res.send(JSON.stringify(result));
+				res.send(JSON.stringify({result:true,db_result:result}));
 			}
-		}) 
+		})
 }); 
 app.put('/child',function(req,res){
 	connection.query( 
@@ -118,7 +123,27 @@ app.put('/child',function(req,res){
 				res.send(JSON.stringify(result));
 			}
 		})
-});     
+});
+app.get('/childlist',function(req,res){ 
+	connection.query('select hpkl_id,hpkl_child_id,name,birth,gender,hpkl_total_saving_love,picture_url from hpkl_child where hpkl_id=? order by hpkl_child_id',
+		[req.query.hpkl_id, req.query.hpkl_child_id], function(err, results, fields) {
+			if (err) {
+				res.send(JSON.stringify(err));
+			} else {
+				if (results.length > 0) {
+					res.send(JSON.stringify({result:true,
+											db_result:results
+											})); 
+				} else {
+					res.send(JSON.stringify({result:false,
+											db_result:null
+											})); 
+				}
+				
+			}
+		});
+});
+
 app.get('/child',function(req,res){ 
 	connection.query('select hpkl_id,hpkl_child_id,name,birth,gender,hpkl_total_saving_love,picture_url from hpkl_child where hpkl_id=? and hpkl_child_id=?',
 		[req.query.hpkl_id, req.query.hpkl_child_id], function(err, results, fields) {
@@ -126,9 +151,13 @@ app.get('/child',function(req,res){
 				res.send(JSON.stringify(err));
 			} else {
 				if (results.length > 0) {
-					res.send(JSON.stringify(results[0]));
+					res.send(JSON.stringify({result:true,
+											db_result:results
+											})); 
 				} else {
-					res.send(JSON.stringify({}));
+					res.send(JSON.stringify({result:false,
+											db_result:null
+											})); 
 				}
 				
 			}
@@ -152,16 +181,21 @@ app.get('/sticker',function(req,res){
 ///////////////////////////////////
 app.post('/child/praise',function(req,res){ 
 	connection.query(
-		'insert into hpkl_praise(hpkl_id, hpkl_child_id, hpkl_date, hpkl_time, hpkl_saving_love, hpkl_praise_memo, hpkl_praise_picture_url, hpkl_sticker_group, hpkl_sticker_code_value) values(?,?,?,?,?,?,?,?,?)',
-		[ req.body.hpkl_id, req.body.hpkl_child_id, req.body.hpkl_date, req.body.hpkl_time, req.body.hpkl_saving_love, req.body.hpkl_praise_memo, req.body.hpkl_praise_picture_url, req.body.hpkl_sticker_group, req.body.hpkl_sticker_code_value ],
+		'insert into hpkl_praise(hpkl_id, hpkl_child_id, hpkl_date, hpkl_time, hpkl_saving_love, hpkl_praise_memo, hpkl_praise_picture_url, hpkl_sticker_name) values(?,?,?,?,?,?,?,?)',
+		[ req.body.hpkl_id, req.body.hpkl_child_id, req.body.hpkl_date, req.body.hpkl_time, req.body.hpkl_saving_love, req.body.hpkl_praise_memo, req.body.hpkl_praise_picture_url, req.body.hpkl_sticker_name ],
 		function(err, result) {
 			if (err) {
-				res.send(JSON.stringify(err));
+				res.send(JSON.stringify({result:false,db_result:err}));
 			} else {
-				res.send(JSON.stringify(result));
-			} 
+				res.send(JSON.stringify({result:true,
+										 hpkl_id:req.body.hpkl_id,
+										 hpkl_child_id:req.body.hpkl_child_id,
+										 db_result:result}));
+			}
 		}) 
 }); 
+ 
+
 app.put('/child/praise',function(req,res){
 	connection.query( 
 		'update hpkl_praise set hpkl_saving_love=?,hpkl_praise_memo=?,hpkl_praise_picture_url=? where hpkl_id=? and hpkl_child_id=? and hpkl_date=? and hpkl_time=?',
@@ -173,24 +207,52 @@ app.put('/child/praise',function(req,res){
 				res.send(JSON.stringify(result));
 			}
 		})
-});     
+});
 app.get('/child/praise',function(req,res){ 
-	connection.query('select hpkl_id,hpkl_child_id,hpkl_date,hpkl_time,hpkl_saving_love,hpkl_praise_memo,hpkl_praise_picture_url, hpkl_sticker_group, hpkl_sticker_code_value from hpkl_praise where hpkl_id=? and hpkl_child_id=?',
+	connection.query('select b.name hpkl_child_name, b.picture_url hpkl_child_picture_url, a.hpkl_id,a.hpkl_child_id,a.hpkl_date,a.hpkl_time,a.hpkl_saving_love,a.hpkl_praise_memo,a.hpkl_praise_picture_url, a.hpkl_sticker_name' 
+					  +' from hpkl_praise a , hpkl_child b '
+					  +'where a.hpkl_id= ? and a.hpkl_id = b.hpkl_id and a.hpkl_child_id = b.hpkl_child_id order by hpkl_date desc, hpkl_time desc',
+	//connection.query('select hpkl_id,hpkl_child_id,hpkl_date,hpkl_time,hpkl_saving_love,hpkl_praise_memo,hpkl_praise_picture_url, hpkl_sticker_name from hpkl_praise where hpkl_id=?',
+		[req.query.hpkl_id], function(err, results, fields) {
+			if (err) {
+				res.send(JSON.stringify(err));
+			} else {
+				if (results.length > 0) {
+					res.send(JSON.stringify({result:true,
+											db_result:results
+											})); 
+				} else {
+					res.send(JSON.stringify({result:false,
+											db_result:null
+											})); 
+				}
+				
+			}
+		});
+});     
+app.get('/child/praise/child',function(req,res){ 
+	connection.query('select b.name hpkl_child_name, b.picture_url hpkl_child_picture_url, a.hpkl_id,a.hpkl_child_id,a.hpkl_date,a.hpkl_time,a.hpkl_saving_love,a.hpkl_praise_memo,a.hpkl_praise_picture_url, a.hpkl_sticker_name' 
+					  +' from hpkl_praise a , hpkl_child b '
+					  +'where a.hpkl_id= ? and a.hpkl_child_id = ? and a.hpkl_id = b.hpkl_id and a.hpkl_child_id = b.hpkl_child_id order by hpkl_date desc, hpkl_time desc',
 		[req.query.hpkl_id, req.query.hpkl_child_id], function(err, results, fields) {
 			if (err) {
 				res.send(JSON.stringify(err));
 			} else {
 				if (results.length > 0) {
-					res.send(JSON.stringify(results));
+					res.send(JSON.stringify({result:true,
+											db_result:results
+											})); 
 				} else {
-					res.send(JSON.stringify({}));
+					res.send(JSON.stringify({result:false,
+											db_result:null
+											})); 
 				}
 				
 			}
 		});
 });
 app.get('/child/praise/list',function(req,res){ 
-	connection.query('select hpkl_id,hpkl_child_id,hpkl_date,hpkl_time,hpkl_saving_love,hpkl_praise_memo,hpkl_praise_picture_url, hpkl_sticker_group, hpkl_sticker_code_value from hpkl_praise where hpkl_id=? and hpkl_child_id=? and hpkl_date=? and hpkl_time=?',
+	connection.query('select hpkl_id,hpkl_child_id,hpkl_date,hpkl_time,hpkl_saving_love,hpkl_praise_memo,hpkl_praise_picture_url, hpkl_sticker_name from hpkl_praise where hpkl_id=? and hpkl_child_id=? and hpkl_date=? and hpkl_time=?',
 		[req.query.hpkl_id, req.query.hpkl_child_id, req.query.hpkl_date, req.query.hpkl_time], function(err, results, fields) {
 			if (err) { 
 				res.send(JSON.stringify(err));
